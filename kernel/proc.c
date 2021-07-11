@@ -295,6 +295,8 @@ fork(void)
 
   np->state = RUNNABLE;
 
+  np->mask = p->mask;
+
   release(&np->lock);
 
   return pid;
@@ -692,4 +694,15 @@ procdump(void)
     printf("%d %s %s", p->pid, state, p->name);
     printf("\n");
   }
+}
+
+int
+num_proc(void)
+{
+  int i;
+  for(i = 0; proc[i].state != UNUSED; i++ )
+  {
+
+  }
+  return i;
 }
